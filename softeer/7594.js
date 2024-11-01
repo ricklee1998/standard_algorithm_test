@@ -5,12 +5,17 @@
 //     output: process.stdout,
 // })
 // input = []
+// input = [
+//     '4',
+//     '2 1 3 3',
+//     '5 1 2 1',
+//     '2 1 2 3',
+//     '5 1 1 1',
+// ]
 input = [
-    '4',
-    '2 1 3 3',
-    '5 1 2 1',
-    '2 1 2 3',
-    '5 1 1 1',
+    '2',
+    '1 2',
+    '3 4',
 ]
 // rl.on("line", (line) => {
 //     input.push(line)
@@ -25,7 +30,7 @@ const dirX = [0, 1];
 const dirY = [1, 0];
 main(input)
 function main(input) {
-    N = input.shift().split("").map(Number)
+    N = Number(input.shift())
     ans = -1
     isVisited = Array.from({ length: N }, () => Array(N).fill(false));
 
@@ -45,6 +50,7 @@ function solution(){
     console.log(ans);
 }
 function DFS(depth, sum, maxDepth) {
+    // console.log("Test Check", depth, sum, maxDepth)
     if (depth === maxDepth) {
         ans = Math.max(ans, sum);
         return;
@@ -62,6 +68,7 @@ function DFS(depth, sum, maxDepth) {
 
                 isVisited[i][j] = true;
                 isVisited[nextX][nextY] = true;
+                // console.log("Test T1", map[i][j] + map[nextX][nextY], i, j, nextX, nextY)
                 DFS(depth + 1, sum + map[i][j] + map[nextX][nextY], maxDepth);
                 isVisited[i][j] = false;
                 isVisited[nextX][nextY] = false;
