@@ -50,7 +50,6 @@ function solution(){
     console.log(ans);
 }
 function DFS(depth, sum, maxDepth) {
-    // console.log("Test Check", depth, sum, maxDepth)
     if (depth === maxDepth) {
         ans = Math.max(ans, sum);
         return;
@@ -68,7 +67,6 @@ function DFS(depth, sum, maxDepth) {
 
                 isVisited[i][j] = true;
                 isVisited[nextX][nextY] = true;
-                // console.log("Test T1", map[i][j] + map[nextX][nextY], i, j, nextX, nextY)
                 DFS(depth + 1, sum + map[i][j] + map[nextX][nextY], maxDepth);
                 isVisited[i][j] = false;
                 isVisited[nextX][nextY] = false;
